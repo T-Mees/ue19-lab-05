@@ -1,4 +1,4 @@
-#UE19-lab-05
+# UE19-lab-05
 ## Application CheapShark Deals
 
 Cette application interroge l'API publique de CheapShark pour afficher les meilleures offres de jeux vidéo sur le site "https://www.cheapshark.com/".
