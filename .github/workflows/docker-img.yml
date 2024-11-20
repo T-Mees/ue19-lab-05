@@ -1,54 +1,41 @@
-name: Build, Scan, and Publish Docker Image
+name: Build, Scan, and publish Docker Image
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  build-and-scan:
+  build-and-publish:
     runs-on: ubuntu-latest
 
+    permissions:
+      packages: write
+      contents: read
+
     steps:
-    # Étape 1 : Installer Docker si nécessaire
-    - name: Install Docker
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-
-    # Étape 2 : Vérifier si Docker est installé
-    - name: Check Docker installation
-      run: docker --version
-
-    # Étape 3 : Checkout du code
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
-    # Étape 4 : Configurer Docker Buildx
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
-
-    # Étape 5 : Construire l'image Docker
-    - name: Build Docker image
-      run: docker build -t cheapshark-deals .
-
-    # Étape 6 : Scanner l'image Docker avec Trivy
-    - name: Scan Docker image with Trivy
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: cheapshark-deals
-        format: table
-
-    # Étape 7 : Connecter au registre GitHub Container Registry
     - name: Log in to GitHub Container Registry
-      uses: docker/login-action@v2
+      uses: docker/login-action@v3
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.SECRET_TOKEN }}
 
-    # Étape 8 : Publier l'image Docker
-    - name: Push Docker image
+    - name: Build the Docker image
+      run: docker build -t ghcr.io/t-mees/cheapshark-deals:latest .
+
+    - name: Wait before retrying Trivy scan
       run: |
-        docker tag cheapshark-deals ghcr.io/t-mees/cheapshark-deals:latest
-        docker push ghcr.io/t-mees/cheapshark-deals:latest
+        echo "Waiting for 30 seconds before retrying the scan..."
+        sleep 30  # Attendre 30 secondes avant de réessayer le scan
+
+    - name: Scan the Docker image with Trivy
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: ghcr.io/t-mees/cheapshark-deals:latest
+
+    - name: Push the Docker image
+      run: docker push ghcr.io/t-mees/cheapshark-deals:latest
