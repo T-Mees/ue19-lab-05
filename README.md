@@ -6,7 +6,7 @@ Cette application interroge l'API publique de CheapShark pour afficher les meill
 
 1. Cloner le dépôt :
    ```bash
-   git clone https://github.com/votre-utilisateur/ue19-lab-05.git
+   git clone https://github.com/T-Mees/ue19-lab-05.git
    cd ue19-lab-05
    
 2. Installer les dépendances :
