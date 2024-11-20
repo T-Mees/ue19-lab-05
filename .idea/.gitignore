@@ -19,10 +19,6 @@ ENV/
 *.swo
 *.DS_Store
 
-# Ignorer les fichiers Docker inutiles
-docker-compose.override.yml
-.dockerignore
-
 # Ignorer les fichiers système (Windows / macOS)
 Thumbs.db
 .DS_Store
