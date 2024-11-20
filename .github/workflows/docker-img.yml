@@ -22,6 +22,11 @@ jobs:
     - name: Build Docker image
       run: docker build -t cheapshark-deals .
 
+    - name: Wait before retrying Trivy scan
+      run: |
+            echo "Waiting for 30 seconds before retrying the scan..."
+            sleep 30  # Attendre 30 secondes avant de réessayer le scan
+
     # Étape 4 : Scanner l'image Docker avec Trivy
     - name: Scan Docker image with Trivy
       uses: aquasecurity/trivy-action@master
