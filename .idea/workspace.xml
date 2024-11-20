@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e32aa6c-3082-4fa9-9ced-80a5aa3b22d8" name="Changes" comment="renaming main -&gt; master" />
+    <list default="true" id="1e32aa6c-3082-4fa9-9ced-80a5aa3b22d8" name="Changes" comment="renaming main -&gt; master">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-img.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-img.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,7 +73,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1732122272332</updated>
-      <workItem from="1732122273403" duration="3460000" />
+      <workItem from="1732122273403" duration="3800000" />
     </task>
     <task id="LOCAL-00001" summary="ajout scan">
       <option name="closed" value="true" />
@@ -121,7 +123,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732128891590</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="renaming main -&gt; master">
+      <option name="closed" value="true" />
+      <created>1732129162634</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732129162634</updated>
+    </task>
+    <task id="LOCAL-00008" summary="renaming main -&gt; master">
+      <option name="closed" value="true" />
+      <created>1732129295979</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1732129295979</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
