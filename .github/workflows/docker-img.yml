@@ -39,6 +39,4 @@ jobs:
 
     # Étape 6 : Publier l'image Docker
     - name: Push Docker image
-      run: |
-        docker tag cheapshark-deals ghcr.io/t-mees/cheapshark-deals:latest
-        docker push ghcr.io/t-mees/cheapshark-deals:latest
+      run: docker push ghcr.io/t-mees/cheapshark-deals:latest
