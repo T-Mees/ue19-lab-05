@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: docker Install
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+        
     # Étape 1 : Checkout du code
     - name: Checkout code
       uses: actions/checkout@v3
