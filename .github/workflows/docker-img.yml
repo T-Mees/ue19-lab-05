@@ -10,32 +10,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-    - name: docker Install
+    # Étape 1 : Installer Docker si nécessaire
+    - name: Install Docker
       run: |
         sudo apt-get update
         sudo apt-get install -y docker.io
-        
-    # Étape 1 : Checkout du code
+
+    # Étape 2 : Vérifier si Docker est installé
+    - name: Check Docker installation
+      run: docker --version
+
+    # Étape 3 : Checkout du code
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Étape 2 : Configurer Docker Buildx
+    # Étape 4 : Configurer Docker Buildx
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
 
-    # Étape 3 : Construire l'image Docker
+    # Étape 5 : Construire l'image Docker
     - name: Build Docker image
       run: docker build -t cheapshark-deals .
 
-    # Étape 4 : Scanner l'image Docker avec Trivy
+    # Étape 6 : Scanner l'image Docker avec Trivy
     - name: Scan Docker image with Trivy
       uses: aquasecurity/trivy-action@master
       with:
         image-ref: cheapshark-deals
         format: table
 
-    # Étape 5 : Connecter au registre GitHub Container Registry
+    # Étape 7 : Connecter au registre GitHub Container Registry
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
       with:
@@ -43,6 +47,8 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    # Étape 6 : Publier l'image Docker
+    # Étape 8 : Publier l'image Docker
     - name: Push Docker image
-      run: docker push ghcr.io/t-mees/cheapshark-deals:latest
+      run: |
+        docker tag cheapshark-deals ghcr.io/t-mees/cheapshark-deals:latest
+        docker push ghcr.io/t-mees/cheapshark-deals:latest
