@@ -1,8 +1,29 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+# Ignorer les fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Ignorer les fichiers de logs
+*.log
+
+# Ignorer les fichiers d'environnement virtuel Python
+env/
+venv/
+ENV/
+*.env
+*.venv
+
+# Ignorer les fichiers créés par l'éditeur ou l'IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Ignorer les fichiers Docker inutiles
+docker-compose.override.yml
+.dockerignore
+
+# Ignorer les fichiers système (Windows / macOS)
+Thumbs.db
+.DS_Store
+
